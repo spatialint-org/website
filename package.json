@@ -1,0 +1,31 @@
+{
+  "name": "geospatial-intelligence-static",
+  "version": "1.0.0",
+  "description": "Static website version of the Geospatial Intelligence Platform",
+  "main": "index.html",
+  "scripts": {
+    "serve": "http-server . -p 8000 -o",
+    "dev": "http-server . -p 8000 -o",
+    "build": "echo 'Static site - no build needed'",
+    "start": "http-server . -p 8000"
+  },
+  "keywords": [
+    "geospatial",
+    "satellite",
+    "drone",
+    "imagery",
+    "intelligence",
+    "defense",
+    "static-site"
+  ],
+  "author": "Geospatial Intelligence Platform",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/geospatial-intelligence-static.git"
+  },
+  "homepage": "https://yourusername.github.io/geospatial-intelligence-static"
+}

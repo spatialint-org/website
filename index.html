@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta name="description"
+        content="Decode satellite & drone imagery with cutting-edge geospatial intelligence. On-prem, cloud, and edge-ready processing for defense and intelligence operations." />
+    <title>Geospatial Intelligence Platform | Satellite & Drone Imagery Analysis</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        border: "hsl(var(--border))",
+                        background: "hsl(var(--background))",
+                        foreground: "hsl(var(--foreground))",
+                        card: "hsl(var(--card))",
+                        'card-foreground': "hsl(var(--card-foreground))",
+                        primary: "hsl(var(--primary))",
+                        'primary-foreground': "hsl(var(--primary-foreground))",
+                        muted: "hsl(var(--muted))",
+                        'muted-foreground': "hsl(var(--muted-foreground))",
+                        accent: "hsl(var(--accent))",
+                        'accent-foreground': "hsl(var(--accent-foreground))",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --background: 0 0% 6%;
+            --foreground: 0 0% 98%;
+            --border: 0 0% 18%;
+            --card: 0 0% 8%;
+            --card-foreground: 0 0% 98%;
+            --card-border: 0 0% 11%;
+            --primary: 205 95% 35%;
+            --primary-foreground: 205 95% 98%;
+            --muted: 0 2% 14%;
+            --muted-foreground: 0 2% 70%;
+            --accent: 0 3% 15%;
+            --accent-foreground: 0 3% 98%;
+        }
+
+        .hover-elevate {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-elevate:hover {
+            transform: translateY(-2px);
+        }
+
+        .active-elevate-2:active {
+            transform: translateY(0px);
+        }
+
+        /* Custom animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased bg-background text-foreground">
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden" id="hero">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style="background-image: url('./assets/isro-map.jpg')"></div>
+
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/80"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 py-20 text-center">
+            <div class="animate-fadeInUp">
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-8 tracking-tight leading-[1.1]"
+                    style="letter-spacing: -0.02em;">
+                    DECODE SATELLITE<br>& DRONE IMAGERY !!!
+                </h1>
+            </div>
+
+            <div class="animate-fadeInUp flex flex-col sm:flex-row gap-6 justify-center items-center"
+                style="animation-delay: 0.4s;">
+                <button onclick="openDemoModal()"
+                    class="px-10 py-5 text-lg font-semibold uppercase tracking-wider bg-primary text-primary-foreground border border-primary rounded-lg hover:bg-primary/90 transition-colors shadow-lg">
+                    Request Demo
+                </button>
+                <button onclick="scrollToFeatures()"
+                    class="px-10 py-5 text-lg font-semibold uppercase tracking-wider bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm shadow-lg">
+                    Learn More
+                </button>
+            </div>
+        </div>
+
+        <!-- ISRO Attribution - Bottom Right Corner -->
+        <div class="absolute bottom-6 right-6 z-20">
+            <p class="text-sm text-white/70 bg-black/30 px-3 py-1 rounded-md backdrop-blur-sm">
+                Background image courtesy of <span class="text-white/90 font-medium">ISRO</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- Demo Request Modal -->
+    <div id="demoModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-card border border-border rounded-lg p-6 w-full max-w-md mx-4">
+            <h2 class="text-2xl font-bold text-card-foreground mb-2">Request a Demo</h2>
+            <p class="text-muted-foreground mb-6">Fill out the form below and our team will get back to you within 24
+                hours.</p>
+
+            <form onsubmit="submitDemoRequest(event)" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-card-foreground mb-1">Full Name</label>
+                    <input type="text" name="name" required
+                        class="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-card-foreground mb-1">Email Address</label>
+                    <input type="email" name="email" required
+                        class="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-card-foreground mb-1">Company / Organization</label>
+                    <input type="text" name="company" required
+                        class="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-card-foreground mb-1">Message</label>
+                    <textarea name="message" rows="4" required
+                        class="w-full px-3 py-2 bg-background border border-border rounded-md text-foreground"></textarea>
+                </div>
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeDemoModal()"
+                        class="flex-1 px-4 py-2 border border-border bg-card text-card-foreground rounded-md hover:bg-accent transition-colors">Cancel</button>
+                    <button type="submit"
+                        class="flex-1 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors">Submit
+                        Request</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-card border border-border rounded-lg p-8 w-full max-w-md mx-4 text-center">
+            <div class="w-16 h-16 text-primary mx-auto mb-4">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-card-foreground mb-2">Request Submitted!</h3>
+            <p class="text-muted-foreground">We'll be in touch shortly.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple fade-in animation for hero content
+            const heroContent = document.querySelectorAll('.animate-fadeInUp');
+            heroContent.forEach((element, index) => {
+                element.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+
+        // Modal functions
+        function openDemoModal() {
+            document.getElementById('demoModal').classList.remove('hidden');
+            document.getElementById('demoModal').classList.add('flex');
+        }
+
+        function closeDemoModal() {
+            document.getElementById('demoModal').classList.add('hidden');
+            document.getElementById('demoModal').classList.remove('flex');
+        }
+
+        function scrollToFeatures() {
+            // Since we removed the features section, just show a message
+            alert('More information coming soon! Contact us for details.');
+        }
+
+        function submitDemoRequest(event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const company = formData.get('company');
+            const message = formData.get('message');
+
+            // Create mailto link
+            const subject = encodeURIComponent('Demo Request from ' + name);
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Company: ${company}\n\n` +
+                `Message:\n${message}`
+            );
+            const mailtoLink = `mailto:starcseven@gmail.com?subject=${subject}&body=${body}`;
+
+            // Open email client
+            window.location.href = mailtoLink;
+
+            // Show success message
+            const button = event.target.querySelector('button[type="submit"]');
+            button.textContent = 'Opening Email...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('demoModal').classList.add('hidden');
+                document.getElementById('demoModal').classList.remove('flex');
+                document.getElementById('successMessage').classList.remove('hidden');
+                document.getElementById('successMessage').classList.add('flex');
+
+                setTimeout(() => {
+                    document.getElementById('successMessage').classList.add('hidden');
+                    document.getElementById('successMessage').classList.remove('flex');
+                    event.target.reset();
+                    button.textContent = 'Submit Request';
+                    button.disabled = false;
+                }, 2000);
+            }, 1000);
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('demoModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeDemoModal();
+            }
+        });
+
+        document.getElementById('successMessage').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                document.getElementById('successMessage').classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('flex');
+            }
+        });
+    </script>
+</body>
+
+</html>
